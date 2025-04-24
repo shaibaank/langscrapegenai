@@ -1,0 +1,196 @@
+import React from 'react';
+
+interface FormControlProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const FormControl: React.FC<FormControlProps> = ({
+  children,
+  className = '',
+}) => {
+  return (
+    <div className={`mb-4 ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+interface LabelProps {
+  htmlFor?: string;
+  children: React.ReactNode;
+  className?: string;
+  required?: boolean;
+}
+
+export const Label: React.FC<LabelProps> = ({
+  htmlFor,
+  children,
+  className = '',
+  required = false,
+}) => {
+  return (
+    <label 
+      htmlFor={htmlFor}
+      className={`block text-sm font-medium mb-2 ${className}`}
+    >
+      {children}
+      {required && <span className="text-red-500 ml-1">*</span>}
+    </label>
+  );
+};
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  error?: string;
+}
+
+export const Input: React.FC<InputProps> = ({
+  className = '',
+  error,
+  ...props
+}) => {
+  return (
+    <>
+      <input
+        className={`w-full px-3 py-2 border border-border-color rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light ${
+          error ? 'border-red-500' : ''
+        } ${className}`}
+        {...props}
+      />
+      {error && (
+        <p className="mt-1 text-sm text-red-500">{error}</p>
+      )}
+    </>
+  );
+};
+
+interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  error?: string;
+}
+
+export const Textarea: React.FC<TextareaProps> = ({
+  className = '',
+  error,
+  ...props
+}) => {
+  return (
+    <>
+      <textarea
+        className={`w-full px-3 py-2 border border-border-color rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light ${
+          error ? 'border-red-500' : ''
+        } ${className}`}
+        {...props}
+      />
+      {error && (
+        <p className="mt-1 text-sm text-red-500">{error}</p>
+      )}
+    </>
+  );
+};
+
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  error?: string;
+  options: { value: string; label: string }[];
+}
+
+export const Select: React.FC<SelectProps> = ({
+  className = '',
+  error,
+  options,
+  ...props
+}) => {
+  return (
+    <>
+      <select
+        className={`w-full px-3 py-2 border border-border-color rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light ${
+          error ? 'border-red-500' : ''
+        } ${className}`}
+        {...props}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      {error && (
+        <p className="mt-1 text-sm text-red-500">{error}</p>
+      )}
+    </>
+  );
+};
+
+interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  label: string;
+  error?: string;
+}
+
+export const Checkbox: React.FC<CheckboxProps> = ({
+  className = '',
+  label,
+  error,
+  ...props
+}) => {
+  return (
+    <div className="flex items-start">
+      <div className="flex items-center h-5">
+        <input
+          type="checkbox"
+          className={`h-4 w-4 text-primary border-border-color rounded focus:ring-primary-light ${className}`}
+          {...props}
+        />
+      </div>
+      <div className="ml-3 text-sm">
+        <label className="font-medium text-text-color">
+          {label}
+        </label>
+        {error && (
+          <p className="mt-1 text-sm text-red-500">{error}</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const HelperText: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className = '',
+}) => {
+  return <p className={`mt-1 text-sm text-text-color-secondary ${className}`}>{children}</p>;
+};
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'destructive';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const Button: React.FC<ButtonProps> = ({
+  children,
+  className = '',
+  variant = 'primary',
+  size = 'md',
+  ...props
+}) => {
+  const variantClasses = {
+    primary: 'bg-primary text-white hover:bg-primary-dark',
+    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
+    destructive: 'bg-red-500 text-white hover:bg-red-600',
+  };
+
+  const sizeClasses = {
+    sm: 'px-2 py-1 text-sm',
+    md: 'px-4 py-2',
+    lg: 'px-6 py-3 text-lg',
+  };
+
+  return (
+    <button
+      className={`font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button; 
