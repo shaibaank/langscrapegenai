@@ -30,52 +30,36 @@ Here are the top 5 search results:
 
 ${formattedResults}
 
-Create a well-structured research paper with the following components:
+Create a well-structured research summary organized into the following distinct sections:
 
-## TITLE
-- Create a concise, descriptive academic title for this research summary
+## OVERVIEW
+- Provide a brief, clear introduction to the topic
+- Explain why this topic is significant
+- Outline the key areas that will be covered in the summary
 
-## ABSTRACT
-- Write a brief (150-200 words) executive summary of the key findings
-- Highlight the significance of the topic and main conclusions
-- Maintain a formal academic tone
+## CORE INSIGHTS
+- Identify and summarize key concepts, methods, and applications related to the topic
+- Condense detailed information into digestible insights
+- Highlight the most important findings from the sources
+- Use bullet points for clarity when appropriate
 
-## INTRODUCTION
-- Provide context and background information on the topic
-- Clearly state the research objective or question
-- Outline the scope and structure of the paper
+## GAPS & CHALLENGES
+- Analyze the collected data to identify what's missing or unresolved in the field
+- Highlight ongoing debates or research challenges that remain open
+- Discuss limitations in current understanding or methodologies
 
-## LITERATURE REVIEW
-- Synthesize key concepts, methods, and applications from the sources
-- Identify patterns, themes, and relationships across the literature
-- Present critical analysis rather than merely summarizing sources
-- Use appropriate academic terminology and citations
+## VIEWPOINTS
+- Compare different perspectives from the sources
+- Identify any contradictions, overlaps, or consensus between them
+- Present balanced information that shows the full spectrum of opinions
+- Note any evolving perspectives or changing consensus
 
-## METHODOLOGY ASSESSMENT
-- Evaluate research methods used in the source materials
-- Identify strengths and limitations of current approaches
-- Discuss methodological challenges in the field
+## PROJECT IDEAS
+- Offer 3-5 feasible, actionable project proposals related to the topic
+- Suggest further questions or research directions that could lead to new discoveries
+- Provide specific starting points or methodological approaches for each idea
 
-## FINDINGS & DISCUSSION
-- Present the most significant insights from the sources
-- Analyze contradictions, consensus, and evolving perspectives
-- Connect findings to broader theoretical frameworks
-- Discuss implications of the findings
-
-## RESEARCH GAPS
-- Identify knowledge gaps and unresolved questions
-- Highlight opportunities for further investigation
-- Discuss theoretical or practical limitations in current understanding
-
-## FUTURE RESEARCH DIRECTIONS
-- Propose 3-5 specific, actionable research projects
-- Outline potential methodological approaches for each
-- Indicate potential impact of suggested research
-
-## CONCLUSION
-- Synthesize key findings and their significance
-- Reinforce the importance of the topic and contributions made
-- End with compelling closing thoughts on future developments.`;
+Format each section with clear headings, concise paragraphs, and use bullet points where appropriate. Write in a formal, academic tone.`;
 
     const result = await model.generateContent(prompt);
     const response = result.response;
